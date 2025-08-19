@@ -1,0 +1,1 @@
+DROP INDEX `github_webhook_channel_channel_id_unique`;
