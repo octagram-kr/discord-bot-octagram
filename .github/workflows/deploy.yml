@@ -1,0 +1,28 @@
+name: Deploy to Oracle VM with PM2
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Execute remote SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.OCI_HOST }}
+          username: ${{ secrets.OCI_USERNAME }}
+          key: ${{ secrets.OCI_KEY }}
+          script: |
+            cd /home/${{ secrets.OCI_USERNAME }}/discord-bot-octagram
+            git pull origin main
+            source ~/.setup_deploy
+            bun install
+            bun run db:generate
+            bun run db:migrate
+            NODE_ENV=production bun run deploy-commands
+            pm2 start ecosystem.config.cjs --only octagram-bot-prod
