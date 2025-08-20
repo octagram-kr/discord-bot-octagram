@@ -1,5 +1,5 @@
 import { AIService } from "@/service/ai.service";
-import { ChatInputCommandInteraction, CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 export const data = new SlashCommandBuilder()
   .setName("aireset")
