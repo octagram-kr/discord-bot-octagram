@@ -25,4 +25,4 @@ jobs:
             bun run db:generate
             bun run db:migrate
             NODE_ENV=production bun run deploy-commands
-            pm2 start ecosystem.config.cjs --only octagram-bot-prod
+            pm2 start ecosystem.config.cjs --only octagram-bot-prod --silent
