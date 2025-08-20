@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import type { AppEvent } from '@/types/events';
 
-// Node.js의 EventEmitter를 확장한 클래스
 export class EventBus extends EventEmitter {
   private static instance: EventBus;
 
@@ -9,7 +8,6 @@ export class EventBus extends EventEmitter {
     super();
   }
 
-  // 싱글톤
   static getInstance(): EventBus {
     if (!EventBus.instance) {
       EventBus.instance = new EventBus();

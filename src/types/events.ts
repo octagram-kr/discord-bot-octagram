@@ -4,4 +4,4 @@ export interface SummarizePrEvent {
   callback: (summary: string | null, isAiSummary: boolean) => void;
 }
 
-export type AppEvent = SummarizePrEvent; // Union 타입으로 확장 가능!
+export type AppEvent = SummarizePrEvent;
