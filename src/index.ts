@@ -24,6 +24,7 @@ client.once(Events.ClientReady, (client) => {
 
 client.on(Events.MessageCreate, async (msg) => {
   if (msg.author.bot) return;
+  if (msg.guildId !== process.env.DISCORD_GUILD_ID!) return;
   const displayName = getDisplayName(msg.member!)
   if (msg.content.includes('잼민')) {
     try {
